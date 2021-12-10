@@ -1,0 +1,21 @@
+{
+  "name": "BattleGame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "phaser": "^3.55.2",
+    "phaser3-rex-plugins": "^1.1.64"
+  },
+  "devDependencies": {
+    "snowpack": "^3.8.8"
+  },
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
