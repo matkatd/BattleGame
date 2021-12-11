@@ -1,8 +1,6 @@
 import Phaser from "phaser";
-import { TextButton } from "../modules/utils/textButton.js";
+import TextButton from "../modules/utils/textButton.js";
 // import CharCreationScreen from "./CharCreationScreen.js";
-
-const BUTTON_TEXT_COLOR = "F5F5F5";
 
 class TitleScreen extends Phaser.Scene {
   constructor() {
@@ -10,39 +8,35 @@ class TitleScreen extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(300, 200, "titleBackground");
+    this.add.image(400, 300, "titleBackground");
     //this.add.image(300, 100, "gameTitle");
-    this.add.text(120, 40, "Game Title", {
-      fontFamily: "bread",
-      fontSize: 75,
-      fill: "#494949",
-    });
-    this.startGameButton = new TextButton(
-      this,
-      240,
-      140,
-      "Start Game",
-      {
+    this.add
+      .text(400, 100, "Game Title", {
         fontFamily: "bread",
-        fontSize: 25,
-        fill: `#${BUTTON_TEXT_COLOR}`,
-      },
+        fontSize: 100,
+        fill: "#494949",
+      })
+      .setOrigin(0.5);
+
+    this.startGameButton = new TextButton(
+      400,
+      200,
+      "Start Game",
+      this,
+      { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
       () => this.scene.start("charCreationScreen")
     );
-    this.startGameButton.setDepth(10);
+    //this.startGameButton.setDepth(10);
+
     this.settingsGameButton = new TextButton(
-      this,
-      250,
-      190,
+      400,
+      275,
       "Settings",
-      {
-        fontFamily: "bread",
-        fontSize: 25,
-        fill: `#0f0`,
-      },
+      this,
+      { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
       () => console.log("You clicked me!")
     );
-    this.settingsGameButton.setDepth(10);
+    //this.settingsGameButton.setDepth(10);
   }
 
   update() {}

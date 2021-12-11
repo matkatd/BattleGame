@@ -6,8 +6,8 @@ import { TextBox } from "phaser3-rex-plugins/templates/ui/ui-components.js";
 
 const config = {
   type: Phaser.AUTO,
-  width: 600,
-  height: 400,
+  width: 800,
+  height: 600,
   physics: {
     default: "arcade",
     arcade: {
