@@ -8,8 +8,8 @@ class TextButton {
       .setPadding(10)
       .setInteractive({ useHandCursor: true })
       .on("pointerup", () => callback())
-      .on("pointerover", () => button.setStyle({ fill: "#CACACA" }))
-      .on("pointerout", () => button.setStyle({ fill: "#F5F5F5" }));
+      .on("pointerover", () => button.setStyle({ fill: "#868687" }))
+      .on("pointerout", () => button.setStyle({ fill: style.fill }));
   }
 }
 

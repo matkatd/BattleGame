@@ -7,7 +7,26 @@ class TitleScreen extends Phaser.Scene {
     super("titleScreen");
   }
 
+  init(data) {
+    this.music = data.bgMusic;
+  }
   create() {
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.charMusic = this.sound.add("charCreationMusic", {
+        mute: false,
+        volume: 0.15,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: true,
+        delay: 0,
+      });
+
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
+
     this.add.image(400, 300, "titleBackground");
     //this.add.image(300, 100, "gameTitle");
     this.add
@@ -24,9 +43,13 @@ class TitleScreen extends Phaser.Scene {
       "Start Game",
       this,
       { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
-      () => this.scene.start("charCreationScreen")
+      () => {
+        this.music.stop();
+        this.charMusic.play();
+
+        this.scene.start("charCreationScreen");
+      }
     );
-    //this.startGameButton.setDepth(10);
 
     this.settingsGameButton = new TextButton(
       400,
@@ -34,9 +57,8 @@ class TitleScreen extends Phaser.Scene {
       "Settings",
       this,
       { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
-      () => console.log("You clicked me!")
+      () => this.scene.start("Options")
     );
-    //this.settingsGameButton.setDepth(10);
   }
 
   update() {}
