@@ -44,6 +44,44 @@ class Preloader extends Phaser.Scene {
 
     this.load.image("box", "../res/Images/ui/grey_box.png");
     this.load.image("checkedBox", "../res/Images/ui/blue_boxCheckmark.png");
+
+    /** Start loading for StoryScreen */
+    this.load.image(
+      "storyScreenBackground",
+      "../res/Images/StoryScreenBackground.jpg"
+    );
+    this.load.spritesheet("n", "../res/Images/compass/N.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("ne", "../res/Images/compass/NE.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("e", "../res/Images/compass/E.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("se", "../res/Images/compass/SE.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("s", "../res/Images/compass/S.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("sw", "../res/Images/compass/SW.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("w", "../res/Images/compass/W.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
+    this.load.spritesheet("nw", "../res/Images/compass/NW.png", {
+      frameWidth: 210,
+      frameHeight: 210,
+    });
   }
   create() {
     this.music = this.sound.add("titleMusic", {
@@ -61,7 +99,7 @@ class Preloader extends Phaser.Scene {
       "Click to Start",
       this,
       { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
-      () => this.scene.start("titleScreen", { bgMusic: this.music })
+      () => this.scene.start("storyScreen", { bgMusic: this.music })
     );
 
     // this.scene.start("titleScreen");

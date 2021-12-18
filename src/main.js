@@ -3,6 +3,7 @@ import Preloader from "./screens/Preloader.js";
 import TitleScreen from "./screens/TitleScreen.js";
 import CharCreationScreen from "./screens/CharCreationScreen.js";
 import CharNameScreen from "./screens/CharNameScreen.js";
+import StoryScreen from "./screens/StoryScreen.js";
 import OptionsScene from "./screens/OptionsScene.js";
 import Model from "./modules/Model.js";
 import config from "./config.js";
@@ -41,6 +42,7 @@ class Game extends Phaser.Game {
     this.scene.add("Options", OptionsScene);
     this.scene.add("charCreationScreen", CharCreationScreen);
     this.scene.add("charNameScreen", CharNameScreen);
+    this.scene.add("storyScreen", StoryScreen);
 
     this.scene.start("preloader");
   }
