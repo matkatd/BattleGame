@@ -34,7 +34,7 @@ class BasicButton extends Phaser.GameObjects.Sprite {
     scene.add.existing(this);
 
     // Make interactive and set listeners
-    this.setInteractive();
+    this.setInteractive({ useHandCursor: true });
     this.on("pointerdown", this.onDown, this);
     this.on("pointerup", this.onOver, this);
     this.on("pointerover", this.onOver, this);

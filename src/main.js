@@ -7,6 +7,7 @@ import StoryScreen from "./screens/StoryScreen.js";
 import OptionsScene from "./screens/OptionsScene.js";
 import Model from "./modules/Model.js";
 import config from "./config.js";
+import User from "./modules/Characters/User.js";
 import { TextBox } from "phaser3-rex-plugins/templates/ui/ui-components.js";
 
 // const config = {
@@ -36,6 +37,7 @@ class Game extends Phaser.Game {
   constructor() {
     super(config);
     const model = new Model();
+
     this.globals = { model, bgMusic: null };
     this.scene.add("preloader", Preloader);
     this.scene.add("titleScreen", TitleScreen);

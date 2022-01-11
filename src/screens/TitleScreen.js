@@ -47,7 +47,7 @@ class TitleScreen extends Phaser.Scene {
         this.music.stop();
         this.charMusic.play();
 
-        this.scene.start("charCreationScreen");
+        this.scene.start("charCreationScreen", { bgMusic: this.charMusic });
       }
     );
 

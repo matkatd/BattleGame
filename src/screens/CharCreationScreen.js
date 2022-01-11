@@ -24,6 +24,10 @@ class CharCreationScreen extends Phaser.Scene {
     this.spacebar;
   }
 
+  init(data) {
+    this.music = data.charMusic;
+  }
+
   preload() {}
 
   create() {
@@ -114,6 +118,7 @@ class CharCreationScreen extends Phaser.Scene {
           () =>
             this.scene.start("charNameScreen", {
               characterImg: characters[characterIndex],
+              bgMusic: this.music,
             })
         );
       }

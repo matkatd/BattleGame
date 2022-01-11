@@ -46,41 +46,47 @@ class Preloader extends Phaser.Scene {
     this.load.image("checkedBox", "../res/Images/ui/blue_boxCheckmark.png");
 
     /** Start loading for StoryScreen */
+    this.load.audio("storyMusic", "../res/Music/Story_1.mp3");
     this.load.image(
       "storyScreenBackground",
       "../res/Images/StoryScreenBackground.jpg"
     );
-    this.load.spritesheet("n", "../res/Images/compass/N.png", {
+    this.load.spritesheet("greenButton", "../res/Images/greenButton.png", {
       frameWidth: 210,
-      frameHeight: 210,
+      frameHeight: 66,
     });
-    this.load.spritesheet("ne", "../res/Images/compass/NE.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+
+    this.load.spritesheet("n", "../res/Images/compass/NSmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
-    this.load.spritesheet("e", "../res/Images/compass/E.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+    this.load.spritesheet("ne", "../res/Images/compass/NESmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
-    this.load.spritesheet("se", "../res/Images/compass/SE.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+    this.load.spritesheet("e", "../res/Images/compass/ESmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
-    this.load.spritesheet("s", "../res/Images/compass/S.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+    this.load.spritesheet("se", "../res/Images/compass/SESmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
-    this.load.spritesheet("sw", "../res/Images/compass/SW.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+    this.load.spritesheet("s", "../res/Images/compass/SSmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
-    this.load.spritesheet("w", "../res/Images/compass/W.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+    this.load.spritesheet("sw", "../res/Images/compass/SWSmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
-    this.load.spritesheet("nw", "../res/Images/compass/NW.png", {
-      frameWidth: 210,
-      frameHeight: 210,
+    this.load.spritesheet("w", "../res/Images/compass/WSmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
+    });
+    this.load.spritesheet("nw", "../res/Images/compass/NWSmall.png", {
+      frameWidth: 100,
+      frameHeight: 100,
     });
   }
   create() {
@@ -99,7 +105,7 @@ class Preloader extends Phaser.Scene {
       "Click to Start",
       this,
       { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
-      () => this.scene.start("storyScreen", { bgMusic: this.music })
+      () => this.scene.start("titleScreen", { bgMusic: this.music })
     );
 
     // this.scene.start("titleScreen");

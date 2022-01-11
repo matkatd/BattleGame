@@ -1,0 +1,31 @@
+class StoryStateMachine extends Phaser.Scene {
+  constructor() {
+    super("storyStateMachine");
+  }
+
+  init(data) {
+    this.hero = data.hero;
+  }
+
+  create() {
+    this.storyFSM = new StateMachine(
+      "init",
+      {
+        init: new InitState(),
+        look: new LookState(),
+        examine: new ExamineState(),
+        talk: new TalkState(),
+        grab: new GrabState(),
+        inventory: new InventoryState(),
+        map: new MapState(),
+      },
+      [this, this.hero]
+    );
+  }
+
+  update() {
+    this.storyFSM.step();
+  }
+}
+
+export default StoryStateMachine;

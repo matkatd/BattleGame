@@ -1,12 +1,15 @@
 import Phaser from "phaser";
-
-var content = ["Please follow the above instructions", "You"];
+import TextButton from "../modules/utils/textButton.js";
+var content = ["Please follow the above instructions"];
+const contentSize = content.length;
 var contentIndex = 0;
 var finishedDialogue = 0;
+var nextButton;
 class CharNameScreen extends Phaser.Scene {
   constructor() {
     super("charNameScreen");
   }
+
   init(data) {
     this.characterImg = data.characterImg;
   }
@@ -17,6 +20,16 @@ class CharNameScreen extends Phaser.Scene {
 
   create() {
     this.add.image(400, 300, "charNameBackground");
+    this.music = this.scene.get("titleScreen").charMusic; // get access to charMusic from titleScreen
+    this.storyMusic = this.sound.add("storyMusic", {
+      mute: false,
+      volume: 0.15,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: true,
+      delay: 0,
+    });
 
     this.character = this.add.image(50, 40, this.characterImg).setOrigin(0, 0);
     this.playerName = "";
@@ -73,42 +86,50 @@ class CharNameScreen extends Phaser.Scene {
       if (this.playerName == "") {
         // If player name has not already been recorded, do this
         this.playerName = textEntry.text;
+        if (this.playerName[0] === " ") {
+          this.playerName = this.playerName.slice(1);
+        }
         textEntry.setText("");
         this.inputInstructions.setText("");
-        this.pressSpacebar.setText("(Press Spacebar to continue)");
+        // this.pressSpacebar.setText("(Press Spacebar to continue)");
         contentIndex++;
         this.typewriter.setText(`Welcome, ${this.playerName}!`);
+        finishedDialogue = 1;
       }
     });
   }
 
-  update() {}
+  update() {
+    this.updateText();
+  }
 
   updateText() {
-    if (
-      Phaser.Input.Keyboard.JustDown(this.spacebar) &&
-      contentIndex < contentSize - 1
-    ) {
-      typewriter.setText(content[contentIndex]);
-      contentIndex++;
-    }
-    if (contentIndex === contentSize - 1) {
-      finishedDialogue++; // No more content
-      if (finishedDialogue === 1) {
-        this.pressSpacebar.setText("");
-        // Give instructions
-        nextButton = new TextButton(
-          400,
-          550,
-          "(Click Next When Ready)",
-          this,
-          { fill: "#3a3a3b", fontFamily: "crystal", fontSize: 35 },
-          () =>
-            this.scene.start("charNameScreen", {
-              characterImg: characters[characterIndex],
-            })
-        );
-      }
+    // if (
+    //   Phaser.Input.Keyboard.JustDown(this.spacebar) &&
+    //   contentIndex < contentSize - 1
+    // ) {
+    //   typewriter.setText(content[contentIndex]);
+    //   contentIndex++;
+    // }
+    if (finishedDialogue === 1) {
+      this.pressSpacebar.setText("");
+      // Give instructions
+      nextButton = new TextButton(
+        400,
+        550,
+        "(Click Next To Begin)",
+        this,
+        { fill: "#3a3a3b", fontFamily: "crystal", fontSize: 35 },
+        () => {
+          this.music.stop();
+          this.storyMusic.play();
+          this.scene.start("storyScreen", {
+            characterImg: this.characterImg,
+            characterName: this.playerName,
+            storyMusic: this.storyMusic,
+          });
+        }
+      );
     }
   }
 }
