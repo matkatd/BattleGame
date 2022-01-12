@@ -1,3 +1,16 @@
+import { State, StateMachine } from "../../StateMachine.js";
+import UserFSM from "../Characters/user.js";
+const {
+  User,
+  InitState,
+  LookState,
+  ExamineState,
+  TalkState,
+  GrabState,
+  InventoryState,
+  MapState,
+  FightState,
+} = UserFSM;
 class StoryStateMachine extends Phaser.Scene {
   constructor() {
     super("storyStateMachine");
@@ -18,6 +31,7 @@ class StoryStateMachine extends Phaser.Scene {
         grab: new GrabState(),
         inventory: new InventoryState(),
         map: new MapState(),
+        fight: new FightState(),
       },
       [this, this.hero]
     );

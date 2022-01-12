@@ -105,7 +105,7 @@ class Preloader extends Phaser.Scene {
       "Click to Start",
       this,
       { fill: "#F5F5F5", fontFamily: "bread", fontSize: 50 },
-      () => this.scene.start("titleScreen", { bgMusic: this.music })
+      () => this.scene.start("storyScreen", { bgMusic: this.music })
     );
 
     // this.scene.start("titleScreen");
